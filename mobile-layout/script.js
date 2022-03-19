@@ -1,13 +1,40 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let toggle = document.getElementById('toggle')
+    fetch('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0')
+        .then(res => res.json())
+        .then(data => {
+            let lista = data.results
+            let $pokemons = lista.map(async pokemon => {
+                let image = await fetch('https://pokeapi.co/api/v2/pokemon-form/' + pokemon.name + '/')
+                    .then(res => res.json())
+                    .then(data => data)
+                    
 
-    toggle.onclick = event => {
-        let nav = document.querySelector('nav')
+                $('#lista-pokemons').append(`
+                    <div>
+                        <img src="${image.sprites.front_default}" alt="">
+                        <p>${pokemon.name}</p>
+                    </div>
+                `)
+            })
 
-        nav.classList.contains('active') ?
-            nav.classList.remove('active') :
-            nav.classList.add('active')
+           
+        })
+    
+    
+    $('body').on('click','#lista-pokemons > div', event => {
+        location.href = '/details.html'
+    })
 
 
-    }
+    // let toggle = document.getElementById('toggle')
+
+    // toggle.onclick = event => {
+    //     let nav = document.querySelector('nav')
+
+    //     nav.classList.contains('active') ?
+    //         nav.classList.remove('active') :
+    //         nav.classList.add('active')
+
+
+    // }
 })
