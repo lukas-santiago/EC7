@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 let image = await fetch('https://pokeapi.co/api/v2/pokemon-form/' + pokemon.name + '/')
                     .then(res => res.json())
                     .then(data => data)
-                    
+
 
                 $('#lista-pokemons').append(`
                     <div>
@@ -17,12 +17,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 `)
             })
 
-           
+
         })
-    
-    
-    $('body').on('click','#lista-pokemons > div', event => {
-        location.href = '/details.html'
+
+
+    $('body').on('click', '#lista-pokemons > div', event => {
+        location.href = 'details.html?pokemon=' + event.currentTarget.textContent.trim()
     })
 
 
