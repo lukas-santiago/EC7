@@ -6,7 +6,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="/n1-cordova/main.css" />
+    <style>
+        /* Pokemons */
+        
+        #lista-pokemons {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 10vw;
+        }
+        
+        #lista-pokemons div {
+            flex: 0 1 15em;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            margin: 1em;
+            align-items: center;
+            background-color: #cecece;
+            border-radius: 1em;
+            cursor: pointer;
+        }
+        
+        #lista-pokemons div:hover {
+            filter: brightness(1.1);
+        }
+        
+        #lista-pokemons div p {
+            text-transform: capitalize;
+        }
+    </style>
 </head>
 
 <body>
