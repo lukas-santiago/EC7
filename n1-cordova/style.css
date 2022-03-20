@@ -1,6 +1,9 @@
+/* Geral */
+
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     --nav-bg: rgb(77, 77, 77);
     --nav-text-color: white;
 }
@@ -9,52 +12,88 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.header-container {
-    background-color: #cecece;
-    display: flex;
+.container {
+    height: 100vh;
+    max-height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 90px;
+    overflow: hidden;
 }
 
-.header-container header {
+
+/* conteúdo */
+
+.content {
+    overflow: auto;
+}
+
+
+/* navegação inferior */
+
+.bottom-nav {
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
-    padding: 1em 2.5em;
+    height: 100%;
+    padding: 1em 0;
+    background-color: #48CAE4;
 }
 
-.header-items {
-    flex: 1 1 0;
+.bottom-nav,
+.bottom-nav * {
+    /* border: solid 1px; */
+    border: none;
+}
+
+.bottom-nav ul {
     display: flex;
+    justify-content: center;
     align-items: center;
+    gap: 1em;
 }
 
-nav {
-    display: none;
-    z-index: 1000;
-    height: 100vh;
-    width: 300px;
-    background-color: var(--nav-bg);
-}
-
-nav.active {
-    display: initial;
-    position: absolute;
-}
-
-nav ul {
-    margin: 2em 0;
-}
-
-nav ul li {
-    color: var(--nav-text-color);
+.bottom-nav ul li {
     list-style: none;
-    padding: 0.5em 1em;
-    background-color: var(--nav-bg);
+    padding: 1em;
+    border-radius: 10px;
+    color: #CAF0F8;
+    background-color: #0077B6;
+    cursor: pointer;
 }
 
-nav ul li:hover {
+.bottom-nav ul li:hover {
+    filter: brightness(1.2);
+}
+
+.bottom-nav a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+/* Pokemons */
+
+#lista-pokemons {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 10vw;
+}
+
+#lista-pokemons div {
+    flex: 0 1 15em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 1em;
+    align-items: center;
+    background-color: #cecece;
+    border-radius: 1em;
+    cursor: pointer;
+}
+
+#lista-pokemons div:hover {
     filter: brightness(1.1);
-}
-
-main {
-    margin: 0 4em;
 }

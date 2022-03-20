@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     $('body').on('click', '#lista-pokemons > div', event => {
-        location.href = 'details.html?pokemon=' + event.currentTarget.textContent.trim()
+        location.href = '/n1-cordova/pages/details.html?pokemon=' + event.currentTarget.textContent.trim()
     })
 
 
