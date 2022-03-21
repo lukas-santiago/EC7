@@ -50,8 +50,8 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">#</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -89,8 +89,8 @@
 
             $('#pokedex-number tbody').append(species.pokedex_numbers.map(pn => `
                 <tr>
-                    <th scope="row">${pn.entry_number}</th>
-                    <td>${pn.pokedex.name}</td>
+                    <td scope="row">${pn.pokedex.name}</td>
+                    <td scope="row">${pn.entry_number}</th>
                 </tr>
             `))
 
