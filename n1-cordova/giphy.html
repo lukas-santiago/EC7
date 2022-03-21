@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="stylesheet" href="/n1-cordova/main.css" />
 </head>
 
 <body>
-    ae
+    
     <div id="giphy-images"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
     <script>
@@ -19,21 +20,22 @@
   redirect: 'follow'
 };
 
-fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=pokemon", requestOptions)
+fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=charmander", requestOptions)
   .then(response => response.json())
   .then((data) => {
+
                  let giphyimages = data
                 console.log(giphyimages)
                 $("#giphy-images").append(
                 giphyimages.data.map(d => `
-                <div>
-                    <h1>img</h1>
-                <img alt="" src="${d.images.preview_gif.url}"/>
+                <div class="content-img">
+                    <img alt="" src="${d.images.preview_gif.url}"/>
+                    <div>${d.slug}</div>
                 </div>
                 `))
                 // console.log(giphyimages.data.map(d => `
                 // <img alt="" src="${d.url}"/>
-                // `));
+                // `)); <h3>${d.images.}</h3>
             })    
 
             .catch(error => console.log('error', error));     

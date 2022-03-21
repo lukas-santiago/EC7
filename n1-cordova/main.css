@@ -71,3 +71,40 @@ body {
     color: #CAF0F8;
     cursor: pointer;
 }
+
+/* giphy.html css */
+.content-img{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    float: left;
+    margin-right: 10px;
+    vertical-align: 30%; 
+      
+   }
+   .content-img div{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: black;
+    color: white;
+    margin-bottom: 5px;
+    font-family: sans-serif;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transition: visibility 0s, opacity 0.5s linear; 
+    transition: visibility 0s, opacity 0.5s linear;
+   }
+           
+   .content-img:hover{
+    cursor: pointer;
+   }
+
+   .content-img:hover div{
+    width: 150px;
+    padding: 8px 15px;
+    visibility: visible;
+    opacity: 0.7; 
+   }
+   
+   /* giphy.html css */
