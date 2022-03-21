@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-	fetch('https://pokeapi.co/api/v2/pokemon?limit=10&offset=0')
+	fetch('https://pokeapi.co/api/v2/pokemon?limit=50&offset=0')
 		.then(res => res.json())
 		.then(data => {
 			let lista = data.results

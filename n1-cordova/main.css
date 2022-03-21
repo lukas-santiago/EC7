@@ -6,13 +6,14 @@
     box-sizing: border-box;
     --nav-bg: rgb(77, 77, 77);
     --nav-text-color: white;
+    text-transform: capitalize
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.container {
+.custom-container {
     height: 100vh;
     max-height: 100vh;
     display: grid;
