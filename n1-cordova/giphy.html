@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    ae
+    <div id="giphy-images"></div>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+    <script>
+        var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=pokemon", requestOptions)
+  .then(response => response.json())
+  .then((data) => {
+                 let giphyimages = data
+                console.log(giphyimages)
+                $("#giphy-images").append(
+                giphyimages.data.map(d => `
+                <div>
+                    <h1>img</h1>
+                <img alt="" src="${d.images.preview_gif.url}"/>
+                </div>
+                `))
+                // console.log(giphyimages.data.map(d => `
+                // <img alt="" src="${d.url}"/>
+                // `));
+            })    
+
+            .catch(error => console.log('error', error));     
+    </script>
+</body>
+
+</html>
