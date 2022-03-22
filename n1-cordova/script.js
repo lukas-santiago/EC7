@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+$(async () => {
   loadPokemons()
 
   $("body").on("click", "#lista-pokemons > div", (event) => {
@@ -22,7 +22,6 @@ async function loadPokemons() {
   `))
 
 }
-
 
 async function getPokemons() {
   let pokemons = await fetch("https://pokeapi.co/api/v2/pokemon?limit=50&offset=" + offset)

@@ -15,12 +15,14 @@
             padding: 0 10vw;
         }
 
-        #giphy-section {
+        .image-section {
             display: flex;
+            position: relative;
+            padding: 0.5em 0;
         }
 
 
-        #giphy-images {
+        .images {
             display: flex;
             flex-wrap: nowrap;
             justify-content: space-between;
@@ -31,32 +33,34 @@
             scrollbar-width: 5px;
         }
 
-        #giphy-images img {
+        .images img {
             height: 10em;
         }
 
-        #giphy-images>div {
+        .images>div {
             flex: 0 0 10em;
             margin: 0 auto;
         }
 
-        #giphy-images::-webkit-scrollbar {
+        .images::-webkit-scrollbar {
             width: 0;
             background: transparent;
         }
 
-        #giphy-images::-webkit-scrollbar-thumb {
+        .images::-webkit-scrollbar-thumb {
             background: #c0c0c0cc;
             border-radius: 10px;
             width: 10px;
         }
 
-        .carousel-control-next-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237f7f7f'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+        .carousel-control-prev {
+            background: linear-gradient(90deg, #888888, transparent);
+            /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237f7f7f'%3e%3cpath d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e"); */
         }
 
-        .carousel-control-prev-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237f7f7f'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e");
+        .carousel-control-next {
+            background: linear-gradient(270deg, #888888, transparent);
+            /* background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%237f7f7f'%3e%3cpath d='M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z'/%3e%3c/svg%3e"); */
         }
     </style>
 </head>
@@ -102,25 +106,42 @@
                     </table>
                 </div>
             </div>
-            <div class="card bg-light mt-1">
+            <div class="card bg-light mt-1" id="giphy">
                 <div class="card-body">
                     <h4 class="card-title">GIFs relacionados <small class="text-muted">by Giphy</small></h4>
-                    <div id="giphy-section">
-                        <div id="giphy-images">
-
-                        </div>
-                        <button class="carousel-control-prev" type="button"
-                            onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button"
-                            onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-
+                </div>
+                <div class="image-section">
+                    <div class="images"></div>
+                    <button class="carousel-control-prev" type="button"
+                        onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+            <div class="card bg-light mt-1" id="pokemon-tcg">
+                <div class="card-body">
+                    <h4 class="card-title">Cards relacionados
+                        <small class="text-muted">by Pokémon TCG API (Trading CardGame)</small>
+                    </h4>
+                </div>
+                <div class="image-section">
+                    <div class="images"></div>
+                    <button class="carousel-control-prev" type="button"
+                        onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button"
+                        onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
                 </div>
             </div>
             <div id="detalhes"></div>
@@ -128,8 +149,8 @@
         <div class="bottom-nav">
             <nav>
                 <ul>
-                    <li><a href="/n1-cordova/ ">Home</a></li>
-                    <li><a href="/n1-cordova/pages/about.html ">About</a></li>
+                    <li><a class="btn btn-primary" href="/n1-cordova/">HOME</a></li>
+                    <li><a class="btn btn-primary" href="/n1-cordova/pages/about.html">ABOUT</a></li>
                 </ul>
             </nav>
         </div>
@@ -140,8 +161,8 @@
         crossorigin="anonymous "></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js "></script>
     <script>
+        let searchTerm = new URLSearchParams(location.search).get("pokemon");
         $(async () => {
-            let searchTerm = new URLSearchParams(location.search).get("pokemon");
 
             let detalhes = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}/`).then((res) => res.json());
             let species = await fetch(detalhes.species.url).then((res) => res.json());
@@ -199,29 +220,76 @@
                 )
             );
 
-            // Giphy
-            fetch(
-                `https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=${searchTerm}&limit=10&offset=0`, {
-                method: "GET",
-                redirect: "follow",
-            }
-            )
-                .then((response) => response.json())
-                .then((data) => {
-                    let giphyimages = data;
-                    console.log(giphyimages);
-                    $("#giphy-images").append(
-                        giphyimages.data.map(
-                            (d) => `
+            loadGifs()
+            loadCards()
+        });
+
+        async function loadGifs() {
+            let giphyimages = await getGifs()
+            console.log(giphyimages);
+
+            $("#giphy .images").append(giphyimages.data.map(d => `
                 <div>
                     <!-- <h5><small class="text-muted">${d.title}</small></h5> -->
                     <img alt="" class="img-thumbnail" src="${d.images.preview_gif.url}"/>
                 </div>
-                `
-                        )
-                    );
-                });
-        });
+                `));
+        }
+
+        async function getGifs() {
+            let requestConfig = {
+                headers: new Headers({})
+            }
+
+            let url = new URL('https://api.giphy.com/v1/gifs/search')
+            url.search = new URLSearchParams({
+                api_key: 'yMARy288xxzj631ZwP45AHJXj3VCK1mV',
+                q: searchTerm,
+                limit: 10,
+                offset: 0
+            }).toString();
+
+            let requestData = await fetch(url, requestConfig)
+                .then(response => response.json())
+                .then(data => data)
+
+            return requestData
+        }
+
+        async function loadCards() {
+            let cards = await getCardsBySearch(searchTerm)
+
+            let cardImages = cards.data.map(card => card.images.small)
+
+            $("#pokemon-tcg .images").append(
+                cardImages.map(d =>
+                    `<div>
+                        <img alt="" class="img-thumbnail" src="${d}"/>
+                    </div>`
+                ));
+        }
+
+
+        async function getCardsBySearch(search) {
+            let requestConfig = {
+                headers: new Headers({
+                    'X-Api-Key': 'c050d6a0-02ac-47c1-b9c6-f51292e26428'
+                })
+            }
+
+            let url = new URL('https://api.pokemontcg.io/v2/cards')
+            url.search = new URLSearchParams({
+                q: `name:` + search,
+                page: 1,
+                pageSize: 10
+            }).toString();
+
+            let requestData = await fetch(url, requestConfig)
+                .then(response => response.json())
+                .then(data => data)
+
+            return requestData
+        }
     </script>
 </body>
 
