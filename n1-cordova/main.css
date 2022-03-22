@@ -78,7 +78,7 @@ body {
     width: 200px;
     height: 200px;
     float: left;
-    margin-right: 10px;
+    /* margin-right: 10px; */
     vertical-align: 30%; 
       
    }
@@ -102,9 +102,12 @@ body {
 
    .content-img:hover div{
     width: 150px;
-    padding: 8px 15px;
+    /* padding: 8px 15px; */
     visibility: visible;
     opacity: 0.7; 
    }
+
+                
+
    
    /* giphy.html css */

@@ -12,7 +12,16 @@
 <body>
     <div class="container">
         <div class="content">
-            <h1>opa</h1>
+            <h3>
+                Arthur Alves de Oliveira - 081190030
+                <br>
+                Lukas Araujo Santiago - 081190013
+                <br>
+                Nicolas Evangelista Thomazini - 081190022
+                <br>
+                Victor Bueno Kato - 081190045
+            </h3>
+            <div></div>
         </div>
         <div class="bottom-nav">
             <nav>
@@ -24,6 +33,33 @@
         </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
+
+     <script>
+        var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=dancing&limit=1&offset=7", requestOptions)
+  .then(response => response.json())
+  .then((data) => {
+
+                 let giphyimages = data
+                console.log(giphyimages)
+                $(".content div").append(
+                giphyimages.data.map(d => `
+                <div class="content-img">
+                    <img alt="" src="${d.images.preview_webp.url}"/>
+                    <div>${d.slug}</div>
+                </div>
+                `))
+                // console.log(giphyimages.data.map(d => `
+                // <img alt="" src="${d.url}"/>
+                // `)); <h3>${d.images.}</h3>
+            })    
+
+            .catch(error => console.log('error', error));     
+    </script>
 </body>
 
 </html>
