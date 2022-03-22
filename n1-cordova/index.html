@@ -1,78 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pokedex</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="/n1-cordova/main.css" />
     <style>
-      /* Pokemons */
-
-      #lista-pokemons {
-        width: 100%;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding: 0 10vw;
-      }
-
-      #lista-pokemons div {
-        flex: 0 1 15em;
-        display: flex;
-        flex-direction: column;
-        padding: 1em;
-        margin: 1em;
-        align-items: center;
-        background-color: #cecece;
-        border-radius: 1em;
-        cursor: pointer;
-      }
-
-      #lista-pokemons div:hover {
-        filter: brightness(1.1);
-      }
-
-      #lista-pokemons div p {
-        text-transform: capitalize;
-      }
+        #lista-pokemons {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 0 10vw;
+            gap: 1em;
+        }
+        
+        #lista-pokemons div {
+            flex: 0 1 10em;
+            display: flex;
+            flex-direction: column;
+            padding: 1em;
+            align-items: center;
+            background-color: #cecece;
+            border-radius: 1em;
+            cursor: pointer;
+        }
+        
+        #lista-pokemons div:hover {
+            filter: brightness(1.1);
+        }
+        
+        #lista-pokemons div p {
+            text-transform: capitalize;
+        }
     </style>
-  </head>
+</head>
 
-  <body>
+<body>
     <div class="custom-container">
-      <div class="content pb-5">
-        <div id="lista-pokemons"></div>
-        <div class="d-flex justify-content-center">
-          <button class="btn btn-primary" onclick="carregarMais()">Carregar mais</button>
+        <div class="content pb-5 pt-5">
+            <div id="lista-pokemons"></div>
+            <div class="d-flex justify-content-center pt-3">
+                <button class="btn btn-primary" onclick="loadPokemons()">Load More</button>
+            </div>
         </div>
-      </div>
-      <div class="bottom-nav">
-        <nav>
-          <ul>
-            <li><a href="/n1-cordova/">Home</a></li>
-            <li><a href="/n1-cordova/pages/about.html">About</a></li>
-          </ul>
-        </nav>
-      </div>
+        <div class="bottom-nav">
+            <nav>
+                <ul>
+                    <li><a href="/n1-cordova/">Home</a></li>
+                    <li><a href="/n1-cordova/pages/about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
     </div>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"
-      integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"
-      integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
     <script src="script.js"></script>
-  </body>
+</body>
+
 </html>
