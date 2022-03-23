@@ -60,6 +60,7 @@ body {
     list-style: none;
 }
 
+
 /* .bottom-nav ul li:hover {
     filter: brightness(1.2);
 } */
@@ -115,11 +116,11 @@ body {
 /* giphy.html css */
 
 .box-names {
-    width: 35%;
+    width: 40%;
     border: 5px solid #0077B6;
     padding: 60px 0;
     text-align: center;
     position: absolute;
     bottom: 35%;
-    left: 35%;
+    left: 30%;
 }
