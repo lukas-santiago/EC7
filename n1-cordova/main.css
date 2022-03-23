@@ -72,17 +72,19 @@ body {
     cursor: pointer;
 }
 
+
 /* giphy.html css https://makitweb.com/html-how-to-show-text-above-image-on-hover/ */
-.content-img{
+
+.content-img {
     position: relative;
     width: 200px;
     height: 200px;
     float: left;
     /* margin-right: 10px; */
-    vertical-align: 30%; 
-      
-   }
-   .content-img div{
+    vertical-align: 30%;
+}
+
+.content-img div {
     position: absolute;
     bottom: 0;
     right: 0;
@@ -92,22 +94,30 @@ body {
     font-family: sans-serif;
     opacity: 0;
     visibility: hidden;
-    -webkit-transition: visibility 0s, opacity 0.5s linear; 
+    -webkit-transition: visibility 0s, opacity 0.5s linear;
     transition: visibility 0s, opacity 0.5s linear;
-   }
-           
-   .content-img:hover{
-    cursor: pointer;
-   }
+}
 
-   .content-img:hover div{
+.content-img:hover {
+    cursor: pointer;
+}
+
+.content-img:hover div {
     width: 150px;
     /* padding: 8px 15px; */
     visibility: visible;
-    opacity: 0.7; 
-   }
+    opacity: 0.7;
+}
 
-                
 
-   
-   /* giphy.html css */
+/* giphy.html css */
+
+.box-names {
+    width: 35%;
+    border: 5px solid #0077B6;
+    padding: 60px 0;
+    text-align: center;
+    position: absolute;
+    bottom: 35%;
+    left: 35%;
+}

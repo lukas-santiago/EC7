@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,34 +10,32 @@
 </head>
 
 <body>
-    
+
     <div id="giphy-images"></div>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js"></script>
     <script>
         var requestOptions = {
-  method: 'GET',
-  redirect: 'follow'
-};
+            method: 'GET',
+            redirect: 'follow'
+        };
 
-fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=charmander", requestOptions)
-  .then(response => response.json())
-  .then((data) => {
+        fetch("https://api.giphy.com/v1/gifs/search?api_key=yMARy288xxzj631ZwP45AHJXj3VCK1mV&q=charmander", requestOptions)
+            .then(response => response.json())
+            .then((data) => {
 
-                 let giphyimages = data
+                let giphyimages = data
                 console.log(giphyimages)
                 $("#giphy-images").append(
-                giphyimages.data.map(d => `
+                    giphyimages.data.map(d => `
                 <div class="content-img">
                     <img alt="" src="${d.images.preview_gif.url}"/>
                     <div>${d.slug}</div>
                 </div>
                 `))
-                // console.log(giphyimages.data.map(d => `
-                // <img alt="" src="${d.url}"/>
-                // `)); <h3>${d.images.}</h3>
-            })    
 
-            .catch(error => console.log('error', error));     
+            })
+
+        .catch(error => console.log('error', error));
     </script>
 </body>
 
