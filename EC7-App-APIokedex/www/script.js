@@ -2,7 +2,7 @@ $(async () => {
   loadPokemons()
 
   $("body").on("click", "#lista-pokemons > div", (event) => {
-    location.href = "/n1-cordova/pages/details.html?pokemon=" + event.currentTarget.textContent.trim();
+    location.href = "pages/details.html?pokemon=" + event.currentTarget.textContent.trim();
   })
 })
 
