@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Details</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
     <link rel="stylesheet" href="/n1-cordova/main.css" />
     <style>
@@ -89,9 +89,52 @@
                     </div>
                 </div>
             </div>
-            <div class="card mt-1" id="pokedex-number">
+            <div class="bottom-nav">
+                <nav>
+                    <ul>
+                        <li><a class="btn btn-primary" href="/n1-cordova/">HOME</a></li>
+                        <li><a class="btn btn-primary" href="/n1-cordova/pages/about.html">ABOUT</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="card bg-light mt-1" id="giphy">
                 <div class="card-body">
-                    <h4 class="card-title">Pokedex Number</h4>
+                    <h4 class="card-title">GIFs relacionados <small class="text-muted">by Giphy</small></h4>
+                </div>
+                <div class="image-section">
+                    <div class="images"></div>
+                    <button class="carousel-control-prev" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+                    <button class="carousel-control-next" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+                </div>
+            </div>
+            <div class="card bg-light mt-1" id="pokemon-tcg">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        Cards relacionados
+                        <small class="text-muted">by Pokémon TCG API (Trading CardGame)</small>
+                    </h4>
+                </div>
+                <div class="image-section">
+                    <div class="images"></div>
+                    <button class="carousel-control-prev" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+                    <button class="carousel-control-next" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+                </div>
+            </div>
+            <div class="card mt-1" id="pokemon-go">
+                <div class="card-body">
+                    <h4 class="card-title">Pokedex GO</h4>
                     <table class="table">
                         <thead>
                             <tr>
@@ -101,49 +144,16 @@
                         </thead>
                         <tbody></tbody>
                     </table>
+                    <div></div>
                 </div>
             </div>
-            <div class="card bg-light mt-1" id="giphy">
-                <div class="card-body">
-                    <h4 class="card-title">GIFs relacionados <small class="text-muted">by Giphy</small></h4>
-                </div>
-                <div class="image-section">
-                    <div class="images"></div>
-                    <button class="carousel-control-prev" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            <div class="card bg-light mt-1" id="pokemon-tcg">
-                <div class="card-body">
-                    <h4 class="card-title">Cards relacionados
-                        <small class="text-muted">by Pokémon TCG API (Trading CardGame)</small>
-                    </h4>
-                </div>
-                <div class="image-section">
-                    <div class="images"></div>
-                    <button class="carousel-control-prev" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(-300,0)">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" onclick="javascript:this.parentElement.firstElementChild.scrollBy(300,0)">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-            </div>
-            <div id="detalhes"></div>
         </div>
         <div class="bottom-nav">
             <nav>
                 <ul>
                     <li><a class="btn btn-primary" href="/n1-cordova/">HOME</a></li>
                     <li><a class="btn btn-primary" href="/n1-cordova/pages/about.html">ABOUT</a></li>
+                    <li><a class="btn btn-primary" href="/n1-cordova/pages/cards.html">CARDS</a></li>
                 </ul>
             </nav>
         </div>
@@ -154,7 +164,6 @@
     <script>
         let searchTerm = new URLSearchParams(location.search).get("pokemon");
         $(async() => {
-
             let detalhes = await fetch(`https://pokeapi.co/api/v2/pokemon/${searchTerm}/`).then((res) => res.json());
             let species = await fetch(detalhes.species.url).then((res) => res.json());
 
@@ -167,119 +176,182 @@
             $("#pokedex-number tbody").append(
                 species.pokedex_numbers.map(
                     (pn) => `
-                <tr>
-                    <td scope="row">${pn.pokedex.name}</td>
-                    <td scope="row">${pn.entry_number}</th>
-                </tr>
-            `
+                      <tr>
+                          <td scope="row">${pn.pokedex.name}</td>
+                          <td scope="row">${pn.entry_number}</th>
+                      </tr>
+                  `
                 )
             );
 
             $("#basics ul").append(`
-                <li class="list-group-item">Weight: ${detalhes.weight}</li>
-                <li class="list-group-item">Height: ${detalhes.height}</li>
-                <li class="list-group-item">Base experience: ${detalhes.base_experience}</li>
-                <li class="list-group-item">Generation: ${species.generation.name}</li>
-            `);
+                      <li class="list-group-item">Weight: ${detalhes.weight}</li>
+                      <li class="list-group-item">Height: ${detalhes.height}</li>
+                      <li class="list-group-item">Base experience: ${detalhes.base_experience}</li>
+                      <li class="list-group-item">Generation: ${species.generation.name}</li>
+                  `);
             $("#abilities ul").append(
                 detalhes.abilities.map(
                     (a) => `
-                <li class="list-group-item">${a.ability.name}${a.is_hidden ? " - Hidden" : ""}</li>
-            `
+                      <li class="list-group-item">${a.ability.name}${a.is_hidden ? " - Hidden" : ""}</li>
+                  `
                 )
             );
 
             $("#stats ul").append(
                 detalhes.stats.map(
                     (s) => `
-                <li class="list-group-item">
-                    <div class="fw-bold">${s.stat.name}</div>
-                    <div class="progress">
-                        <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${s.base_stat}%"
-                            aria-valuenow="${s.base_stat}" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                </li>
-            `
+                      <li class="list-group-item">
+                          <div class="fw-bold">${s.stat.name}</div>
+                          <div class="progress">
+                              <div class="progress-bar progress-bar-striped" role="progressbar" style="width: ${s.base_stat}%"
+                                  aria-valuenow="${s.base_stat}" aria-valuemin="0" aria-valuemax="100"></div>
+                          </div>
+                      </li>
+                  `
                 )
             );
 
             $("#types ul").append(
                 detalhes.types.map(
                     (t) => `
-                <li class="list-group-item">${t.type.name}</li>
-            `
+                      <li class="list-group-item">${t.type.name}</li>
+                  `
                 )
             );
 
-            loadGifs()
-            loadCards()
+            loadGifs();
+            loadCards();
+            loadPokemonGoInfo();
         });
 
         async function loadGifs() {
-            let giphyimages = await getGifs()
+            let giphyimages = await getGifs();
             console.log(giphyimages);
 
-            $("#giphy .images").append(giphyimages.data.map(d => `
-                <div>
-                    <!-- <h5><small class="text-muted">${d.title}</small></h5> -->
-                    <img alt="" class="img-thumbnail" src="${d.images.preview_gif.url}"/>
-                </div>
-                `));
+            $("#giphy .images").append(
+                giphyimages.data.map(
+                    (d) => `
+                      <div>
+                          <!-- <h5><small class="text-muted">${d.title}</small></h5> -->
+                          <img alt="" class="img-thumbnail" src="${d.images.preview_gif.url}"/>
+                      </div>
+                      `
+                )
+            );
         }
 
         async function getGifs() {
             let requestConfig = {
-                headers: new Headers({})
-            }
+                headers: new Headers({}),
+            };
 
-            let url = new URL('https://api.giphy.com/v1/gifs/search')
+            let url = new URL("https://api.giphy.com/v1/gifs/search");
             url.search = new URLSearchParams({
-                api_key: 'yMARy288xxzj631ZwP45AHJXj3VCK1mV',
+                api_key: "yMARy288xxzj631ZwP45AHJXj3VCK1mV",
                 q: searchTerm,
                 limit: 10,
-                offset: 0
+                offset: 0,
             }).toString();
 
             let requestData = await fetch(url, requestConfig)
-                .then(response => response.json())
-                .then(data => data)
+                .then((response) => response.json())
+                .then((data) => data);
 
-            return requestData
+            return requestData;
         }
 
         async function loadCards() {
-            let cards = await getCardsBySearch(searchTerm)
+            let cards = await getCardsBySearch(searchTerm);
 
-            let cardImages = cards.data.map(card => card.images.small)
+            let cardImages = cards.data.map((card) => card.images.small);
 
             $("#pokemon-tcg .images").append(
-                cardImages.map(d =>
+                cardImages.map(
+                    (d) =>
                     `<div>
-                        <img alt="" class="img-thumbnail" src="${d}"/>
-                    </div>`
-                ));
+                              <img alt="" class="img-thumbnail" src="${d}"/>
+                          </div>`
+                )
+            );
         }
-
 
         async function getCardsBySearch(search) {
             let requestConfig = {
                 headers: new Headers({
-                    'X-Api-Key': 'c050d6a0-02ac-47c1-b9c6-f51292e26428'
-                })
-            }
+                    "X-Api-Key": "c050d6a0-02ac-47c1-b9c6-f51292e26428",
+                }),
+            };
 
-            let url = new URL('https://api.pokemontcg.io/v2/cards')
+            let url = new URL("https://api.pokemontcg.io/v2/cards");
             url.search = new URLSearchParams({
                 q: `name:` + search,
                 page: 1,
-                pageSize: 10
+                pageSize: 10,
             }).toString();
 
             let requestData = await fetch(url, requestConfig)
-                .then(response => response.json())
-                .then(data => data)
+                .then((response) => response.json())
+                .then((data) => data);
 
-            return requestData
+            return requestData;
+        }
+
+        async function loadPokemonGoInfo() {
+            let allData = await getPokemonGoInfo();
+
+            let [
+                pokemon_names,
+                raid_exclusive_pokemon,
+                possible_ditto_pokemon,
+                pokemon_stats,
+                pokemon_candy_to_evolve,
+                pokemon_rarity,
+            ] = allData;
+
+            // pokemon_names = pokemon_names.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+            // raid_exclusive_pokemon = raid_exclusive_pokemon.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+            // possible_ditto_pokemon = possible_ditto_pokemon.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+            // pokemon_stats = pokemon_stats.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+            // pokemon_candy_to_evolve = pokemon_candy_to_evolve.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+            // pokemon_rarity = pokemon_rarity.filter((item) => item.name.toLocaleLowerCase() == searchTerm);
+
+            console.log({
+                pokemon_names,
+                raid_exclusive_pokemon,
+                possible_ditto_pokemon,
+                pokemon_stats,
+                pokemon_candy_to_evolve,
+                pokemon_rarity,
+            });
+        }
+
+        async function getPokemonGoInfo() {
+            // pokemon-go
+            let requestConfig = {
+                headers: new Headers({
+                    // 'X-Api-Key': 'c050d6a0-02ac-47c1-b9c6-f51292e26428'
+                }),
+            };
+            let urls = [
+                "https://pogoapi.net/api/v1/pokemon_names.json",
+                "https://pogoapi.net/api/v1/raid_exclusive_pokemon.json",
+                "https://pogoapi.net/api/v1/possible_ditto_pokemon.json",
+                "https://pogoapi.net/api/v1/pokemon_stats.json",
+                "https://pogoapi.net/api/v1/pokemon_candy_to_evolve.json",
+                "https://pogoapi.net/api/v1/pokemon_rarity.json",
+            ];
+
+            let requestData = await Promise.all(urls.map((url) => fetchPokemonGoUrls(url)));
+            return requestData;
+        }
+
+        async function fetchPokemonGoUrls(url) {
+            let data = await fetch(url)
+                .then((response) => response.json())
+                .then((data) => data);
+
+            return data;
         }
     </script>
 </body>
